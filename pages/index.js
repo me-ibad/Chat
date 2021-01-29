@@ -588,20 +588,20 @@ content="helostranger is platform to talk with strangers.Best Plarform to talk w
 
               </p>
               <div className="mt-12">
-                <a
+              <Link 
                   href="/Blog"
-                  target="_blank"
+                 
                   className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-gray-600 active:bg-gray-700 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
                   Read Blog
-                </a>
-                <a
+                </Link>
+                <Link 
                   href="/Write"
                   className="github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-gray-800 active:bg-gray-700 uppercase text-sm shadow hover:shadow-lg"
-                  target="_blank"
+                 
                 >
                   Write Blog
-                </a>
+                </Link >
               </div>
             </div>
           </div>
@@ -772,13 +772,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mattis ipsum a 
                 Write about your experience in blog
               </p>
               <div className="sm:block flex flex-col mt-10">
-                <a
+                <Link
                   href="/Write"
                   target="_blank"
                   className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-gray-600 active:bg-gray-700 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
                   Write Blog
-                </a>
+                </Link>
                 
               </div>
               <div className="text-center mt-16"></div>
