@@ -79,6 +79,8 @@ function Blog() {
 
     return (
         <div>
+
+
             <IndexNavbar fixed />
       <section className="header relative pt-16 items-center flex h-4/5 max-h-860-px">
         <div className="container mx-auto items-center flex flex-wrap">
@@ -89,6 +91,7 @@ function Blog() {
                Blog
               </h1>
               <br/><br/>   <br/><br/>   <br/><br/>   <br/><br/>   <br/><br/>
+              {allpost!=""? <>
               {allpost.map((s,i)=> (<>
               <br/><br/>
 
@@ -115,7 +118,7 @@ function Blog() {
 
     </Link>
     </> ))}
-
+    </>:<>Loading</>}
             </div>
             </div>
             </div>

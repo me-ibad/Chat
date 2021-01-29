@@ -51,10 +51,13 @@ function Details() {
   
     return (
         <div>
+
          <IndexNavbar fixed />
+         {allpost!=""? <>
       <section className="header relative pt-16 items-center flex h-4/5 max-h-860-px">
         <div className="container mx-auto items-center flex flex-wrap">
         <div className="w-full md:w-8/12  ">
+       
             <div className=" ">
              <br/><br/><br/>
              <h1 className="font-bold text-5xl text-gray-700">
@@ -73,7 +76,7 @@ function Details() {
             </div>
              
              </section>  
-
+             </>:<>Loading</>}
              <br/><br/><br/><br/>
              <Footer />   
         </div>

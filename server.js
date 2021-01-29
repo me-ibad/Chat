@@ -114,31 +114,6 @@ findpatner(socket)
     
 
   
-
-    socket.on('sharereviews', function (data) {
-  const message = {
-        from: "saeedartists@gmail.com", // Sender address
-        to: "saeedartists@gmail.com", // List of recipients
-        subject: "reviews talk stranger", // Subject line
-       //// text: "", // Plain text body
-       html: '<html><body><h1>reviews talk stranger</h1><p>Name:'+data.name+'</p> <p>'+data.message+' </p></body></html>'
-
-       
-      };
-    
-
-       transport.sendMail(message, function (err, info) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(info);
-         ///// res1.json("Code Has been Sent");
-        }
-        
-      });
-  
-  });
-
  socket.on('nowait', function (data) {
 
 
