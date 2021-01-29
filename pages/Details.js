@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-
+import Head from 'next/head'
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import { makeStyles } from '@material-ui/core/styles';
@@ -50,6 +50,14 @@ function Details() {
 
   
     return (
+
+      <main>
+      <Head>
+  
+  <title>chat app</title>
+  <meta name="description" 
+  content="helostranger is platform to talk with strangers.Best Plarform to talk with stranger people and say hellostranger"></meta>
+  </Head>
         <div>
 
          <IndexNavbar fixed />
@@ -80,6 +88,7 @@ function Details() {
              <br/><br/><br/><br/>
              <Footer />   
         </div>
+        </main>
     )
 }
 

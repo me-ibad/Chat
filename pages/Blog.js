@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Head from 'next/head'
 import socketIOClient from "socket.io-client";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
@@ -78,6 +79,14 @@ function Blog() {
 
 
     return (
+
+      <main>
+      <Head>
+  
+  <title>chat app</title>
+  <meta name="description" 
+  content="helostranger is platform to talk with strangers.Best Plarform to talk with stranger people and say hellostranger"></meta>
+  </Head>
         <div>
 
 
@@ -128,6 +137,7 @@ function Blog() {
              <br/><br/><br/><br/>
              <Footer />   
         </div>
+        </main>
     )
 }
 

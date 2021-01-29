@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-
+import Head from 'next/head'
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
@@ -527,8 +527,16 @@ const onStop= async(recordedBlob)  => {
 
 
   return (
-    <>
 
+
+    <>
+    <main>
+    <Head>
+
+<title>chat app</title>
+<meta name="description" 
+content="helostranger is platform to talk with strangers.Best Plarform to talk with stranger people and say hellostranger"></meta>
+</Head>
 {enablechat=="0"?<>
 <IndexNavbar fixed />
       <section className="header relative pt-16 items-center flex h-4/5 max-h-860-px">
@@ -1055,7 +1063,7 @@ null}
 
 
 
-
+</main>
 
 
         </>

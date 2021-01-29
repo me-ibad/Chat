@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Head from 'next/head'
 import Button from '@material-ui/core/Button';
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
@@ -51,6 +52,14 @@ function Write() {
 
 
     return (
+
+      <main>
+      <Head>
+  
+  <title>chat app</title>
+  <meta name="description" 
+  content="helostranger is platform to talk with strangers.Best Plarform to talk with stranger people and say hellostranger"></meta>
+  </Head>
         <div>
             <IndexNavbar fixed />
       <section className="header relative pt-16 items-center flex h-4/5 max-h-860-px">
@@ -92,6 +101,7 @@ function Write() {
              <br/><br/><br/><br/>
              <Footer />   
         </div>
+        </main>
     )
 }
 
