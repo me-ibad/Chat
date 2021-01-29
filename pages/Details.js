@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
@@ -9,7 +9,46 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useRouter } from 'next/router'
 function Details() {
+  const router = useRouter()
+  var pid = router.query.id
+
+  const [allpost, setallpost] = useState([]);
+
+
+  async function fetchblog(){
+  
+    var config=require("../config");
+    var url=config.url;
+ 
+      const response= await fetch(url+"/api/readdetail", {
+        method: "post",
+        headers: {
+          "content-type": "application/x-www-form-urlencoded; charset=utf-8",
+        },
+        body: `id=${pid}`,
+        // body: JSON.stringify({
+        //   fabric: fabric,
+          
+        // })
+      });
+      const json=await response.json();
+     //// alert(json[0].message)
+   setallpost(json[0])
+
+
+      }
+      useEffect(() => {
+ 
+        fetchblog();  
+                },[]);
+  
+  
+
+
+
+  
     return (
         <div>
          <IndexNavbar fixed />
@@ -19,14 +58,16 @@ function Details() {
             <div className=" ">
              <br/><br/><br/>
              <h1 className="font-bold text-5xl text-gray-700">
-               Title
+              {allpost.topic}
               </h1>
 
               <br/><br/>
               <p className="mb-4 text-gray-600 break-words">
-                        Give us your feedback so we can provide you good Services. we looking forward.
+              {allpost.message}
                       </p>
-
+                      <p className="mb-4 text-gray-600 break-words">
+              {allpost.name}
+                      </p>
             </div>
             </div>
             </div>

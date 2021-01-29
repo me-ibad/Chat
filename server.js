@@ -3,15 +3,18 @@ const server = require('http').Server(app)
 const io = require('socket.io')(server)
 const next = require('next')
 const nodemailer = require("nodemailer");
+const express = require("express");
 const dev = process.env.NODE_ENV !== 'production'
 const nextApp = next({ dev })
 const nextHandler = nextApp.getRequestHandler()
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const router = express.Router();
 
-// fake DB
-const messages = []
 
 
-var url="mongodb+srv://saadi:saadi@cluster0-znryv.mongodb.net/helostranger";
+
+var post=require("./routes/posts")
 const MongoClient = require("mongodb").MongoClient;
 let transport = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -24,6 +27,12 @@ let transport = nodemailer.createTransport({
     pass: "Mongodbwithnodejs1430",
   },
 });
+
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use("/api", router);
 
 
 
@@ -102,63 +111,9 @@ findpatner(socket)
 
 
 
-    socket.on('readblog', function (data) {
+    
 
-
-      console.log(data);
-      MongoClient.connect(url, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      },function(err, db) {
-        if (err) throw err;
-        var dbo = db.db("helostranger");
   
-        dbo.collection('Blog').aggregate([
-          { $match : {verify:"yes"}},   {   
-            $project:{
-
-              name: 1,
-              topic: 1,
-        message: 1,
-     
-      
-            } 
-        }
-          ]).toArray(function(err, result) {
-          if (err) throw err;
-          console.log(result);
-          socket.emit('blogdata', {result});
-    
-         
-        }
-
-
-
-        )})
-      
-          })
-
-    socket.on('shareblog', function (data) {
-
-
-      console.log(data);
-      MongoClient.connect(url, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      },function(err, db) {
-        if (err) throw err;
-        var dbo = db.db("helostranger");
-        var myobj = {topic: data.topic,name: data.name,message: data.message,verify:"yes"};
-        dbo.collection("Blog").insertOne(myobj, function(err, res1) {
-          if (err) throw err;
-          console.log("1 document inserted");
-        
-    
-         
-        }
-        )})
-      
-          })
 
     socket.on('sharereviews', function (data) {
   const message = {
@@ -291,10 +246,16 @@ findpatner(socket)
 });
 
 nextApp.prepare().then(() => {
-  app.get('/messages', (req, res) => {
-    res.json(messages)
-  })
 
+
+ post(router)
+
+
+  // app.get('/messages', (req, res) => {
+  //   res.json(messages)
+  // })
+  
+  
   app.get('*', (req, res) => {
     return nextHandler(req, res)
   })

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-
+import socketIOClient from "socket.io-client";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import { makeStyles } from '@material-ui/core/styles';
@@ -29,7 +29,53 @@ const useStyles = makeStyles({
   
 function Blog() {
     const classes = useStyles();
+
+
+
+
+
+    async function fetchblog(){
+  
+      var config=require("../config");
+      var url=config.url;
+   
+        const response= await fetch(url+"/api/readblog", {
+          method: "post",
+          headers: {
+            "content-type": "application/x-www-form-urlencoded; charset=utf-8",
+          },
+          body: ``,
+          // body: JSON.stringify({
+          //   fabric: fabric,
+            
+          // })
+        });
+        const json=await response.json();
+     setallpost(json)
+  
+ 
+        }
+  
+
+
+
+    const [allpost, setallpost] = useState([]);
+
+
+    useEffect(() => {
+ 
+      fetchblog();  
+              },[]);
+
+
+
+
+
+
+
+
     const bull = <span className={classes.bullet}>•</span>;
+
 
     return (
         <div>
@@ -42,20 +88,24 @@ function Blog() {
              <h1 className="font-bold text-5xl text-gray-700">
                Blog
               </h1>
-
+              <br/><br/>   <br/><br/>   <br/><br/>   <br/><br/>   <br/><br/>
+              {allpost.map((s,i)=> (<>
               <br/><br/>
-              <a href="/Details">
+
+
+              {/* <a href={"/Details/"+s._id}> */}
+          <Link href={"/Details/?id="+s._id} >
              <Card className={classes.root}>
       <CardContent>
       
         <Typography variant="h3" component="h2">
-         Title
+        {s.topic}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          adjective
+        By:{s.name}
         </Typography>
         <Typography variant="body2" component="p">
-         description
+        {s.message.substring(0,30)} 
         </Typography>
       </CardContent>
       <CardActions>
@@ -63,8 +113,8 @@ function Blog() {
       </CardActions>
     </Card>
 
-    </a>
-
+    </Link>
+    </> ))}
 
             </div>
             </div>
