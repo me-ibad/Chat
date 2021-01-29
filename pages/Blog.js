@@ -10,10 +10,13 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles({
     root: {
       minWidth: 375,
+      marginTop:10,
     },
     bullet: {
       display: 'inline-block',
@@ -83,7 +86,7 @@ function Blog() {
       <main>
       <Head>
   
-  <title>chat app</title>
+  <title>Helostranger</title>
   <meta name="description" 
   content="helostranger is platform to talk with strangers.Best Plarform to talk with stranger people and say hellostranger"></meta>
   </Head>
@@ -91,18 +94,17 @@ function Blog() {
 
 
             <IndexNavbar fixed />
-      <section className="header relative pt-16 items-center flex h-4/5 max-h-860-px">
-        <div className="container mx-auto items-center flex flex-wrap">
-        <div className="w-full md:w-8/12  ">
-            <div className=" ">
-             <br/><br/><br/>
+   
+            <Container maxWidth="lg">
+            <div className=" margtop">
+           
              <h1 className="font-bold text-5xl text-gray-700">
                Blog
               </h1>
-              <br/><br/>   <br/><br/>   <br/><br/>   <br/><br/>   <br/><br/>
+              
               {allpost!=""? <>
               {allpost.map((s,i)=> (<>
-              <br/><br/>
+    
 
 
               {/* <a href={"/Details/"+s._id}> */}
@@ -127,15 +129,15 @@ function Blog() {
 
     </Link>
     </> ))}
-    </>:<>Loading</>}
+    </>:<>
+    <CircularProgress />
+    
+    </>}
             </div>
-            </div>
-            </div>
-             
-             </section>  
-
+          
+</Container>
              <br/><br/><br/><br/>
-             <Footer />   
+            
         </div>
         </main>
     )

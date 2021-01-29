@@ -43,7 +43,9 @@
   grid-gap: 20px;
 }
 
-
+.margtop{
+  margin-top: 100px;
+}
 @media (min-width: 30em) {
   .band {
     grid-template-columns: 1fr 1fr;

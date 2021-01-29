@@ -9,6 +9,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import { useRouter } from 'next/router'
 function Details() {
   const router = useRouter()
@@ -54,19 +56,21 @@ function Details() {
       <main>
       <Head>
   
-  <title>chat app</title>
+  <title>Helostrange</title>
   <meta name="description" 
   content="helostranger is platform to talk with strangers.Best Plarform to talk with stranger people and say hellostranger"></meta>
   </Head>
         <div>
 
          <IndexNavbar fixed />
-         {allpost!=""? <>
+         
       <section className="header relative pt-16 items-center flex h-4/5 max-h-860-px">
         <div className="container mx-auto items-center flex flex-wrap">
         <div className="w-full md:w-8/12  ">
        
             <div className=" ">
+            {allpost!=""? <>
+
              <br/><br/><br/>
              <h1 className="font-bold text-5xl text-gray-700">
               {allpost.topic}
@@ -79,13 +83,21 @@ function Details() {
                       <p className="mb-4 text-gray-600 break-words">
               {allpost.name}
                       </p>
+
+                      </>:<>
+             
+             <CircularProgress />
+             
+             </>}
+
+
             </div>
             </div>
             </div>
              
              </section>  
-             </>:<>Loading</>}
-             <br/><br/><br/><br/>
+            
+             <br/><br/>
              <Footer />   
         </div>
         </main>

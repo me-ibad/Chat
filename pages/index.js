@@ -533,7 +533,7 @@ const onStop= async(recordedBlob)  => {
     <main>
     <Head>
 
-<title>chat app</title>
+<title>Helostrange</title>
 <meta name="description" 
 content="helostranger is platform to talk with strangers.Best Plarform to talk with stranger people and say hellostranger"></meta>
 </Head>
